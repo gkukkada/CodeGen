@@ -4,11 +4,12 @@ Created on Jun 21, 2017
 @author: Gowtham
 '''
 import logging
+from string import lower
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 # create a file handler
-handler = logging.FileHandler('/Users/sanju/request.log')
+handler = logging.FileHandler('./request.log')
 handler.setLevel(logging.INFO)
 
 # create a logging format
@@ -18,38 +19,47 @@ handler.setFormatter(formatter)
 # add the handlers to the logger
 logger.addHandler(handler)
 
-METHOD = 'DELETE'
 DEFAULT_USER = 'admin'
-DEFAULT_PASS = 'admin' 
+DEFAULT_PASS = 'admin'
+DEFAULT_PORT = '9083'
+DEFAULT_HOSTNAME = '192.168.92.67'
 check_mode=False
 force=False
+delete_runtime_interface_interface = '10.11.12.13'
+delete_runtime_interface_port = '8080'
+DEFAULT_LOG_LEVEL = 'DEBUG'
+force = True
+action = 'DELETE'
+
 
 def create_isam_config_file():
-    isam_config_file = '/Users/sanju/isam.config'
+    isam_config_file = './isam.yml'
     logger.info('Creating %s', isam_config_file)
     with open(isam_config_file, 'w+') as f:
-        f.write('[\n')
 #         f.write('  {kernel, [{net_ticktime,  %s}]},\n' % net_ticktime)
-        f.write('  {rabbit,\n')
-        f.write('    [\n')
-        f.write('     {loopback_users, []},\n')
-        f.write('     {heartbeat, 580},\n')
-        f.write('     {default_user, <<"%s">>},\n' % DEFAULT_USER)
-        f.write('     {default_pass, <<"%s">>},\n' % DEFAULT_PASS)
-#         f.write('     {default_vhost, <<"%s">>},\n' % default_vhost)
-#         f.write('     {cluster_partition_handling, %s},\n' % cluster_partition_handling)
-        f.write('     {cluster_nodes, {[\n')
-#         if node_ips:
-#             nodes_str = ','.join(["'rabbit@%s'" % get_node_name(n)
-#                                   for n in node_ips])
-#             f.write('      %s\n' % nodes_str)
-        f.write('      ], disc}}\n')
-        f.write('    ]\n')
-        f.write('  },\n')
-#         f.write('  {rabbitmq_management, [{listener, [{port, %s}]}]}\n'
-#                 % rabbitmq_management_port)
-        f.write('].\n')
+        f.write('- name: Delete Runtime Tuning Parameters\n')
+        f.write('  isam:\n')
+        f.write('    appliance: "%s"\n'  % DEFAULT_HOSTNAME)
+        f.write('    username: "%s"\n'  % DEFAULT_USER)
+        f.write('    password: "%s"\n'  % DEFAULT_PASS)
+        f.write('    lmi_port: "%s"\n'  % DEFAULT_PORT)
+        f.write('    log: "%s"\n'  % DEFAULT_LOG_LEVEL)
+        f.write('    force: "%s"\n'  % force)
+        f.write('    action: %s\n'  % get_action(action))
+        f.write('    isamapi:\n')
+        f.write('      interface:  "%s"\n'  % delete_runtime_interface_interface)
+        f.write('      port:       "%s"\n'  % delete_runtime_interface_port)
+        f.write('  when: delete_runtime_interface_interface is defined and delete_runtime_interface_port is defined \n')
+        f.write('  notify: Commit Changes')
+
+def get_action(method):
+    switcher = {
+        'delete': "ibmsecurity.isam.base.runtime.listening_interfaces.delete",
+        'get': "ibmsecurity.isam.base.runtime.listening_interfaces.get",
+        'create': "ibmsecurity.isam.base.runtime.listening_interfaces.create",
+    }
+    return switcher.get(lower(method), "nothing")
 
 if __name__ == '__main__':
-    
+
     create_isam_config_file()
