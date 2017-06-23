@@ -2,6 +2,11 @@
 Created on Jun 21, 2017
 
 @author: Gowtham
+
+DEPRECATED
+
+This is a hard coded version of generating yaml. 
+
 '''
 import logging
 from string import lower
