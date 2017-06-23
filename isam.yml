@@ -1,7 +1,4 @@
-2017-06-22 20:43:37,807 - __main__ - INFO - >> create_isam_config_file
-2017-06-22 20:43:37,807 - __main__ - INFO - Creating ./isam.yml
-2017-06-22 20:43:37,810 - __main__ - INFO - Final yaml 
- -   isam:
+-   isam:
         action: ibmsecurity.isam.base.runtime.listening_interfaces.delete
         appliance: 192.168.92.67
         force: true
@@ -16,5 +13,3 @@
     notify: Commit Changes
     when: delete_runtime_interface_interface is defined and delete_runtime_interface_port
         is defined
-
-2017-06-22 20:43:37,813 - __main__ - INFO - << create_isam_config_file

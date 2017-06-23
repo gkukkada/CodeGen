@@ -55,10 +55,8 @@ def create_isam_config_file():
     data['isam']['isamapi']['port'] = delete_runtime_interface_port
     data['when'] = 'delete_runtime_interface_interface is defined and delete_runtime_interface_port is defined'
     data['notify'] = 'Commit Changes'
-    pp = pprint.PrettyPrinter(indent=2)
-    pp.pprint(data)
     arr.append(data)
-    logger.info('Final yaml \n %s', yaml.dump(arr,default_flow_style=False))
+    logger.info('Final yaml \n %s', yaml.dump(arr,default_flow_style=False,indent=4))
 
     with open(isam_config_file, 'w+') as f:
         yaml.safe_dump(arr,f, allow_unicode=True, encoding='utf-8', default_flow_style=False, indent=4)
