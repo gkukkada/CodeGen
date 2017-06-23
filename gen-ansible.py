@@ -5,7 +5,7 @@ Created on Jun 21, 2017
 '''
 import logging
 from string import lower
-import yaml, json
+import yaml
 import pprint
 
 logger = logging.getLogger(__name__)
@@ -34,8 +34,6 @@ DEFAULT_LOG_LEVEL = 'DEBUG'
 force = True
 action = 'DELETE'
 isam_config_file = './isam.yml'
-isam_config_file_json = './isam.json'
-
 
 def create_isam_config_file():
     logger.info('Creating %s', isam_config_file)
