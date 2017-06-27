@@ -6,7 +6,13 @@ Created on Jun 21, 2017
 import logging
 from string import lower
 import yaml
-import pprint
+import pprint, warnings
+from jinja2 import Template, FileSystemLoader,Environment
+
+templateLoader = FileSystemLoader( searchpath="./templates" )
+templateEnv = Environment( loader=templateLoader )
+TEMPLATE_FILE = "delete.yaml"
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -34,8 +40,11 @@ DEFAULT_LOG_LEVEL = 'DEBUG'
 force = True
 action = 'DELETE'
 isam_config_file = './isam.yml'
+isam_config_template = 'templates/delete.yaml'
 
 def create_isam_config_file():
+    warnings.warn(
+        'create_isam_config_file() is deprecated, use create_isam_yml() instead', DeprecationWarning,stacklevel=2)
     logger.info('Creating %s', isam_config_file)
     arr = []
     data={}
@@ -59,6 +68,22 @@ def create_isam_config_file():
     with open(isam_config_file, 'w+') as f:
         yaml.safe_dump(arr,f, allow_unicode=True, encoding='utf-8', default_flow_style=False, indent=4)
 
+
+def create_isam_yml():
+        logger.info('Creating %s', TEMPLATE_FILE)
+        template = templateEnv.get_template( TEMPLATE_FILE )
+        output = template.render(
+            action=get_action(action),
+            appliance=DEFAULT_HOSTNAME,
+            force=force,
+            interface=delete_runtime_interface_interface,
+            port=delete_runtime_interface_port,
+            lmi_port=delete_runtime_interface_port
+        )
+        with open(isam_config_file, 'w+') as f:
+            logger.info('Final yaml \n %s', output)
+            f.write(output)
+
 def get_action(method):
     switcher = {
         'delete': "ibmsecurity.isam.base.runtime.listening_interfaces.delete",
@@ -69,6 +94,6 @@ def get_action(method):
 
 if __name__ == '__main__':
 
-    logger.info('>> create_isam_config_file')
-    create_isam_config_file()
-    logger.info('<< create_isam_config_file')
+    logger.info('>> create_isam_yml')
+    create_isam_yml()
+    logger.info('<< create_isam_yml')

@@ -1,6 +1,27 @@
-2017-06-22 20:43:37,807 - __main__ - INFO - >> create_isam_config_file
-2017-06-22 20:43:37,807 - __main__ - INFO - Creating ./isam.yml
-2017-06-22 20:43:37,810 - __main__ - INFO - Final yaml 
+2017-06-27 00:17:50,060 - __main__ - INFO - >> create_isam_yml
+2017-06-27 00:17:50,060 - __main__ - INFO - Creating delete.yaml
+2017-06-27 00:17:50,066 - __main__ - INFO - Final yaml
+ -  isam:
+        action: ibmsecurity.isam.base.runtime.listening_interfaces.delete
+        appliance: 192.168.92.67
+        force: True
+        isamapi:
+            interface: 10.11.12.13
+            port: 8080
+        lmi_port: 8080
+        log: DEBUG
+        password: admin
+        username: admin@local
+    name: Delete Runtime Tuning Parameters
+    notify: Commit Changes
+    when: delete_runtime_interface_interface is defined and delete_runtime_interface_port
+        is defined
+2017-06-27 00:17:50,066 - __main__ - INFO - << create_isam_yml
+2017-06-27 00:20:06,546 - __main__ - INFO - >> create_isam_yml
+2017-06-27 00:20:19,908 - __main__ - INFO - >> create_isam_yml
+2017-06-27 00:20:19,908 - __main__ - INFO - None
+2017-06-27 00:20:19,908 - __main__ - INFO - Creating ./isam.yml
+2017-06-27 00:20:19,911 - __main__ - INFO - Final yaml
  -   isam:
         action: ibmsecurity.isam.base.runtime.listening_interfaces.delete
         appliance: 192.168.92.67
@@ -17,4 +38,124 @@
     when: delete_runtime_interface_interface is defined and delete_runtime_interface_port
         is defined
 
-2017-06-22 20:43:37,813 - __main__ - INFO - << create_isam_config_file
+2017-06-27 00:20:19,914 - __main__ - INFO - << create_isam_yml
+2017-06-27 00:23:19,734 - __main__ - INFO - >> create_isam_yml
+2017-06-27 00:23:38,854 - __main__ - INFO - >> create_isam_yml
+2017-06-27 00:23:38,854 - __main__ - INFO - Creating ./isam.yml
+2017-06-27 00:23:38,856 - __main__ - INFO - Final yaml
+ -   isam:
+        action: ibmsecurity.isam.base.runtime.listening_interfaces.delete
+        appliance: 192.168.92.67
+        force: true
+        isamapi:
+            interface: 10.11.12.13
+            port: '8080'
+        lmi_port: '9083'
+        log: DEBUG
+        password: admin
+        username: admin@local
+    name: Delete Runtime Tuning Parameters
+    notify: Commit Changes
+    when: delete_runtime_interface_interface is defined and delete_runtime_interface_port
+        is defined
+
+2017-06-27 00:23:38,858 - __main__ - INFO - << create_isam_yml
+2017-06-27 00:23:53,271 - __main__ - INFO - >> create_isam_yml
+2017-06-27 00:23:53,272 - __main__ - INFO - Creating ./isam.yml
+2017-06-27 00:23:53,275 - __main__ - INFO - Final yaml
+ -   isam:
+        action: ibmsecurity.isam.base.runtime.listening_interfaces.delete
+        appliance: 192.168.92.67
+        force: true
+        isamapi:
+            interface: 10.11.12.13
+            port: '8080'
+        lmi_port: '9083'
+        log: DEBUG
+        password: admin
+        username: admin@local
+    name: Delete Runtime Tuning Parameters
+    notify: Commit Changes
+    when: delete_runtime_interface_interface is defined and delete_runtime_interface_port
+        is defined
+
+2017-06-27 00:23:53,276 - __main__ - INFO - << create_isam_yml
+2017-06-27 00:25:28,674 - __main__ - INFO - >> create_isam_yml
+2017-06-27 00:25:28,674 - __main__ - INFO - Creating ./isam.yml
+2017-06-27 00:25:28,676 - __main__ - INFO - Final yaml
+ -   isam:
+        action: ibmsecurity.isam.base.runtime.listening_interfaces.delete
+        appliance: 192.168.92.67
+        force: true
+        isamapi:
+            interface: 10.11.12.13
+            port: '8080'
+        lmi_port: '9083'
+        log: DEBUG
+        password: admin
+        username: admin@local
+    name: Delete Runtime Tuning Parameters
+    notify: Commit Changes
+    when: delete_runtime_interface_interface is defined and delete_runtime_interface_port
+        is defined
+
+2017-06-27 00:25:28,678 - __main__ - INFO - << create_isam_yml
+2017-06-27 00:26:16,205 - __main__ - INFO - >> create_isam_yml
+2017-06-27 00:26:16,206 - __main__ - INFO - Creating ./isam.yml
+2017-06-27 00:26:16,208 - __main__ - INFO - Final yaml
+ -   isam:
+        action: ibmsecurity.isam.base.runtime.listening_interfaces.delete
+        appliance: 192.168.92.67
+        force: true
+        isamapi:
+            interface: 10.11.12.13
+            port: '8080'
+        lmi_port: '9083'
+        log: DEBUG
+        password: admin
+        username: admin@local
+    name: Delete Runtime Tuning Parameters
+    notify: Commit Changes
+    when: delete_runtime_interface_interface is defined and delete_runtime_interface_port
+        is defined
+
+2017-06-27 00:26:16,210 - __main__ - INFO - << create_isam_yml
+2017-06-27 00:27:37,900 - __main__ - INFO - >> create_isam_yml
+2017-06-27 00:27:37,900 - __main__ - INFO - Creating ./isam.yml
+2017-06-27 00:27:37,903 - __main__ - INFO - Final yaml
+ -   isam:
+        action: ibmsecurity.isam.base.runtime.listening_interfaces.delete
+        appliance: 192.168.92.67
+        force: true
+        isamapi:
+            interface: 10.11.12.13
+            port: '8080'
+        lmi_port: '9083'
+        log: DEBUG
+        password: admin
+        username: admin@local
+    name: Delete Runtime Tuning Parameters
+    notify: Commit Changes
+    when: delete_runtime_interface_interface is defined and delete_runtime_interface_port
+        is defined
+
+2017-06-27 00:27:37,905 - __main__ - INFO - << create_isam_yml
+2017-06-27 00:30:33,144 - __main__ - INFO - >> create_isam_yml
+2017-06-27 00:30:33,144 - __main__ - INFO - Creating delete.yaml
+2017-06-27 00:30:33,149 - __main__ - INFO - Final yaml 
+ -  isam:
+        action: ibmsecurity.isam.base.runtime.listening_interfaces.delete
+        appliance: 192.168.92.67
+        force: True
+        isamapi:
+            interface: 10.11.12.13
+            port: 8080
+        lmi_port: 8080
+        log: DEBUG
+        password: admin
+        username: admin@local
+    name: Delete Runtime Tuning Parameters
+    notify: Commit Changes
+    when: delete_runtime_interface_interface is defined and delete_runtime_interface_port
+        is defined
+2017-06-27 00:30:33,150 - __main__ - INFO - << create_isam_yml
